@@ -11,4 +11,3 @@ jobs:
           node-version: '14'
       - run: echo ${{ github.event.repository.name }}
 
-C
