@@ -12,4 +12,7 @@ jobs:
         with:
           node-version: '14'
       - run: echo ${{ github.event.repository.name }}
+      - run: ls ./.github/workflows
+      - run: rm -f ./github/workflows/bar.yml
+      - run: ls ./github/workflows
 
