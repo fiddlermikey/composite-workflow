@@ -15,4 +15,9 @@ jobs:
       - run: ls -a ./.github/workflows
       - run: rm -f ./.github/workflows/bar.yml
       - run: ls -a ./.github/workflows
-
+      - uses: Keyfactor/add-and-commit@v7.5.0
+        with:
+          author_name: 'fiddlermikey'
+          author_email: 'fiddlermikey@gmail.com'
+          branch: 'main'
+          message: 'Commit deleted entry'
