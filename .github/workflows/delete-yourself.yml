@@ -1,0 +1,23 @@
+name: test-n-dump
+# run-name: ${{ github.actor }} is learning GitHub Actions in ${{ github.event.repository.name }}
+on: [workflow_dispatch]
+jobs:
+  delete-yourself:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.COMMIT_TOKEN_PERSONAL }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: echo ${{ github.event.repository.name }}
+      - run: ls -a ./.github/workflows
+      - run: rm -f ./.github/workflows/bar.yml
+      - run: ls -a ./.github/workflows
+      - uses: Keyfactor/add-and-commit@v7.5.0
+        with:
+          author_name: 'fiddlermikey'
+          author_email: 'fiddlermikey@gmail.com'
+          branch: 'main'
+          message: 'Commit deleted entry'
