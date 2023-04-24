@@ -8,13 +8,17 @@ jobs:
       update_catalog: ${{ steps.read-json.outputs.prop }}
     steps:
       - uses: actions/checkout@v3
-      - name: Read json
-        id: read-json
+      - name: Store json
+        id: store-json
         shell: pwsh
         run: |
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
           echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
           echo "::set-output name=integration_type::$(echo $json.integration_type)"
-          echo "update_catalog = $integration_type"
-          echo "integration_type = $integration_type"
+      - name: Read json
+        id: read-json
+        shell: pwsh
+        run: |
+          echo "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
+          echo "update_catalog = ${{steps.store-json.outputs.integration_type}}"
 
