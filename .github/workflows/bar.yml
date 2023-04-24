@@ -5,7 +5,8 @@ jobs:
   get-manifest-properties:
     runs-on: windows-latest
     outputs:
-      update_catalog: ${{ steps.read-json.outputs.prop }}
+      update_catalog: ${{ steps.read-json.outputs.update_catalog }}
+      integration_type:  ${{ steps.read-json.outputs.integration_type }}
     steps:
       - uses: actions/checkout@v3
       - name: Store json
@@ -14,7 +15,7 @@ jobs:
         run: |
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
           echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
-          echo "integration_type=bar" >> "$GITHUB_ENV"
+          echo "integration_type=bar" >> "GITHUB_OUTPUT"
 #          echo "::set-output name=integration_type::$(echo $json.integration_type)"
 
       - name: Read json
