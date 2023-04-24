@@ -15,8 +15,7 @@ jobs:
         run: |
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
           echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
-          echo "integration_type=bar" >> "$GITHUB_OUTPUT"
-#          echo "::set-output name=integration_type::$(echo $json.integration_type)"
+          echo "::set-output name=integration_type::$(echo $json.integration_type)"
 
       - name: Read json
         id: read-json
@@ -25,9 +24,3 @@ jobs:
           echo "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
           echo "integration_type = ${{steps.store-json.outputs.integration_type}}"
 
-      - name: Set color
-        id: random-color-generator
-        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-      - name: Get color
-
-        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
