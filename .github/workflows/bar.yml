@@ -14,6 +14,6 @@ jobs:
         run: |
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
           echo "::set-output name=prop::$(echo $json.update_catalog)"
-          echo "::set-output name=prop::$(echo $integration_type)"
+          echo "::set-output name=prop::$(echo $json.integration_type)"
 
 
