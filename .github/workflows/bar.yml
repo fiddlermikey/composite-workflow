@@ -25,3 +25,9 @@ jobs:
           echo "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
           echo "integration_type = ${{env.integration_type}}"
 
+      - name: Set color
+        id: random-color-generator
+        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+      - name: Get color
+
+        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
