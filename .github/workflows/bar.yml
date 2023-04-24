@@ -23,7 +23,7 @@ jobs:
         shell: pwsh
         run: |
           echo "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
-          echo "integration_type = ${{env.integration_type}}"
+          echo "integration_type = ${{steps.store-json.outputs.integration_type}}"
 
       - name: Set color
         id: random-color-generator
