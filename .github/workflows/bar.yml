@@ -14,7 +14,7 @@ jobs:
         shell: pwsh
         run: |
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
-          "update_catalog=$json.update_catalog" >> $env.GITHUB_OUTPUT
+          "update_catalog" = $json.update_catalog >> $env.GITHUB_OUTPUT
           "integration_type=$json.integration_type" >> $env.GITHUB_OUTPUT
           #echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
           #echo "::set-output name=integration_type::$(echo $json.integration_type)"
