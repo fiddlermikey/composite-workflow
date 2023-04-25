@@ -15,7 +15,7 @@ jobs:
         run: |
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
           echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
-          echo "::set-output name=integration_type::$(echo $json.update_catalog)"
+          echo "::set-output name=integration_type::$(echo $json.integration_type)"
 
       - name: Read json
         id: read-json
