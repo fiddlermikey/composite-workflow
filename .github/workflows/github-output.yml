@@ -17,7 +17,7 @@ jobs:
           $myvar = $json.update_catalog
           echo "update_catalog=$myvar" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
           $myvar = $json.integration_type
-          echo "update_catalog=$myvar" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
+          echo "integration_type=$myvar" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
 
       - name: Read json
         id: read-json
