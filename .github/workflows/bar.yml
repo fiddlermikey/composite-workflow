@@ -18,7 +18,7 @@ jobs:
           #echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
           echo "integration_type=$json.integration_type" >> $env:GITHUB_OUTPUT
           #echo "::set-output name=integration_type::$(echo $json.integration_type)"
-          echo $env:GITHUB_OUTPUT
+          echo "out = $env:GITHUB_OUTPUT
 
       - name: Read json
         id: read-json
