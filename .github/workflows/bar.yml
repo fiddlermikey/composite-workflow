@@ -1,5 +1,4 @@
 name: test-n-dump
-# run-name: ${{ github.actor }} is learning GitHub Actions in ${{ github.event.repository.name }}
 on: [workflow_dispatch]
 jobs:
   get-manifest-properties:
