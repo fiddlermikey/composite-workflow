@@ -11,10 +11,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: echo ${{ github.event.repository.name }}
-      - run: ls -a ./.github/workflows
-      - run: rm -f ./.github/workflows/bar.yml
-      - run: ls -a ./.github/workflows
       - uses: Keyfactor/add-and-commit@v7.5.0
         with:
           author_name: 'fiddlermikey'
