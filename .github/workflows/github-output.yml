@@ -31,5 +31,5 @@ jobs:
         env:
           FOO: BAR
         run: |
-          Write-Output "update_catalog = ${{ FOO }} (exp. BAR)"
+          Write-Output "update_catalog = ${{ env.FOO }} (exp. BAR)"
 
