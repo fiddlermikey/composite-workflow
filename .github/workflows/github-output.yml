@@ -26,3 +26,10 @@ jobs:
           Write-Output "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
           Write-Output "integration_type = ${{steps.store-json.outputs.integration_type}}"
 
+      - name: Env Variables
+        id: read-env
+        env:
+          FOO: BAR
+        run: |
+          Write-Output "update_catalog = ${{ FOO }} (exp. BAR)"
+
