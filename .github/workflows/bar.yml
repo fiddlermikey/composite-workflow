@@ -1,6 +1,8 @@
 name: test-n-dump
 on: [workflow_dispatch]
 jobs:
+  call-create-github-release-workflow:
+    uses: Keyfactor/actions/.github/workflows/github-release.yml@upd-deprecated
   get-manifest-properties:
     runs-on: windows-latest
     outputs:
