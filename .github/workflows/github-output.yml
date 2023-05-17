@@ -1,4 +1,4 @@
-name: test-n-dump
+name: github-output
 # run-name: ${{ github.actor }} is learning GitHub Actions in ${{ github.event.repository.name }}
 on: [push, workflow_dispatch]
 jobs:

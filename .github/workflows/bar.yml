@@ -1,4 +1,4 @@
-name: test-n-dump
+name: bar
 on: [workflow_dispatch]
 jobs:
   call-create-github-release-workflow:
