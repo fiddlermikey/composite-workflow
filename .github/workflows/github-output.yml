@@ -1,35 +1,19 @@
 name: github-output
 # run-name: ${{ github.actor }} is learning GitHub Actions in ${{ github.event.repository.name }}
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
+defaults:
+	env:
+		TEAM_PERMISSIONS: '[["one","foo"],["two","bar"]]'
 jobs:
-  get-manifest-properties:
+  read-default-output:
     runs-on: windows-latest
-    outputs:
-      update_catalog: ${{ steps.read-json.outputs.update_catalog }}
-      integration_type:  ${{ steps.read-json.outputs.integration_type }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Store json
-        id: store-json
-        shell: pwsh
-        run: |
-          $json = Get-Content integration-manifest.json | ConvertFrom-Json
-          $myvar = $json.update_catalog
-          echo "update_catalog=$myvar" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
-          $myvar = $json.integration_type
-          echo "integration_type=$myvar" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
-
-      - name: Read json
-        id: read-json
-        shell: pwsh
-        run: |
-          Write-Output "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
-          Write-Output "integration_type = ${{steps.store-json.outputs.integration_type}}"
-
       - name: Env Variables
         id: read-env
         env:
           FOO: BAR
         run: |
           Write-Output "update_catalog = ${{ env.FOO }} (exp. BAR)"
+          Write-Output " TEAM_PERMISSIONS = ${{ env.TEAM_PERMISSIONS }}"
+
 
