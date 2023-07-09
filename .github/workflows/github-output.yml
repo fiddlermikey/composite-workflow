@@ -1,8 +1,8 @@
 name: github-output
 # run-name: ${{ github.actor }} is learning GitHub Actions in ${{ github.event.repository.name }}
-on: [workflow_dispatch]
+on: [workflow_dispatch,push]
 env:
-  TEAM_PERMISSIONS: '[["one","foo"],["two","bar"]]'
+  TEAM_PERMISSIONS: [["one","foo"],["two","bar"]]
 jobs:
   read-default-output:
     runs-on: windows-latest
