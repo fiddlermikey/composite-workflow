@@ -5,6 +5,8 @@ jobs:
   get-repo-description:
     name: Check the description for this Repository
     runs-on: ubuntu-latest
+    outputs:
+      is-empty: ${{ steps.get_description.outputs.is_empty }}
     steps:
       - name: Get description from manifest
         id: get_description
@@ -25,4 +27,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`New description: ${{ needs.get-repo-description.steps.get_description.outputs.is_empty}}`)
+            console.log(`New description: ${{ needs.get-repo-description.outputs.is-empty}}`)
