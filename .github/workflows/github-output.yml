@@ -11,12 +11,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const description-text = 'My MOST Text Description'
-            const repo = context.repo.repo
-            const org = context.repo.owner
-            const owner = org
+            // const description-text = 'My MOST Text Description'
+            // const repo = context.repo.repo
+            // const org = context.repo.owner
+            // const owner = org
             const response = await github.rest.repos.update({
-              owner,
-              repo,
-              description: description-text
+              context.repo.owner,
+              context.repo.repo,
+              description: 'My MOST Text Description'
             })
