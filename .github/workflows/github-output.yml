@@ -15,7 +15,7 @@ jobs:
             const repo = context.repo.repo
             const org = context.repo.owner
             const owner = org
-            const response = github.request('PATCH /repos/{owner}/{repo}', {
+            const response = await github.request('PATCH /repos/{owner}/{repo}', {
               owner,
               repo,
               description: description-text
