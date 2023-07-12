@@ -13,7 +13,7 @@ jobs:
           script: |
             // check existing description from manifest
             var IS_EMPTY=
-            core.exportVariable('IS_EMPTY', `T`);
+            core.exportVariable('IS_EMPTY', 'T');
             
   update-repo-description:
     name: Update the description for this Repository
