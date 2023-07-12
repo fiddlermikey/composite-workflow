@@ -6,6 +6,9 @@ jobs:
     name: Check the description for this Repository
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Update repository description
         id: update_description
         uses: actions/github-script@v6
