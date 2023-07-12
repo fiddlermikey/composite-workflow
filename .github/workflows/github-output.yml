@@ -25,4 +25,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`New description: ${{ env.IS_EMPTY }}`)
+            console.log(`New description: ${ env.IS_EMPTY }`)
