@@ -16,6 +16,7 @@ jobs:
             
   update-repo-description:
     name: Update the description for this Repository
+    needs: get-repo-description
     # if: ${{ env.IS_EMPTY }} != 'T'
     runs-on: ubuntu-latest
     steps:
@@ -24,4 +25,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`New description: ${{ get-repo-description.steps.get_description.outputs.is_empty}}`)
+            console.log(`New description: ${{ needs.get-repo-description.steps.get_description.outputs.is_empty}}`)
