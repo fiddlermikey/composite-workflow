@@ -13,7 +13,7 @@ jobs:
           script: |
             // check existing description from manifest
             var IS_EMPTY=
-            core.exportVariable('IS_EMPTY', 'T');
+            core.setOutput('is_empty', 'T');
             
   update-repo-description:
     name: Update the description for this Repository
@@ -25,4 +25,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`New description: ${IS_EMPTY}`)
+            console.log(`New description: ${{ steps.get_description.outputs.is_empty}}`)
