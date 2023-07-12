@@ -1,30 +1,44 @@
 name: Update repository description
 on: push
-        
+
 jobs:
   get-repo-description:
     name: Check the description for this Repository
     runs-on: ubuntu-latest
     outputs:
-      is-empty: ${{ steps.get_description.outputs.is_empty }}
+      is-empty: ${{ steps.check_if_empty_description.outputs.is_empty }}
     steps:
-      - name: Get description from manifest
-        id: get_description
+      - name: Check if repo description is empty
+        id: check_if_empty_description
         uses: actions/github-script@v6
         with:
           script: |
             // check existing description from manifest
-            core.setOutput('is_empty', 'T');
+            const response = await github.request('GET /repos/{owner}/{repo}', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+            const { description } = response.data
+            var IS_EMPTY=
+            (description.length > 0) ? IS_EMPTY='F' : IS_EMPTY='T'
+            core.exportVariable('IS_EMPTY', `${IS_EMPTY}`);
             
   update-repo-description:
     name: Update the description for this Repository
     needs: get-repo-description
-    # if: ${{ env.IS_EMPTY }} != 'T'
+    if: ${{ needs.get-repo-description.outputs.is-empty}} != 'T'
     runs-on: ubuntu-latest
     steps:
+      - name: Get description from manifest
+        id: get_description
+        uses: fiddlermikey/assign-from-json@v1.0
+        with:
+          input-file: 'integration-manifest.json'
+          input-property: 'description'
+
       - name: Update repository description
         id: update_description
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`New description: ${{ needs.get-repo-description.outputs.is-empty}}`)
+            console.log(`New description: ${ steps.get_description.outputs.output-property }`)
