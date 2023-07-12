@@ -1,35 +1,27 @@
-name: github-output
-# run-name: ${{ github.actor }} is learning GitHub Actions in ${{ github.event.repository.name }}
-on: [workflow_dispatch,push]
+name: Update repository description
+on: push
+        
 jobs:
-  read-default-output:
-    runs-on: windows-latest
+  get-repo-description:
+    name: Check the description for this Repository
+    runs-on: ubuntu-latest
     steps:
-      - name: Map type to topic
-        id: map_type
+      - name: Get description from manifest
+        id: get_description
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`map_type`);
-            switch ('ca-gateway') {
-            case 'orchestrator':
-              topic = 'keyfactor-universal-orchestrator'
-              break;
-            case 'windows-orchestrator':
-              topic = 'keyfactor-orchestrator'
-              break;
-            case 'ca-gateway':
-              topic = 'keyfactor-cagateway'
-              break;
-            case 'pam':
-              topic = 'keyfactor-pam'
-              break;
-            case 'api-client':
-              topic = 'keyfactor-api-client'
-              break;
-            default:
-              topic = 'empty'
-              console.log(`Unknwon type: ` + repoJSONProps.integration_type);
-            }
-            core.setOutput('topic-label', topic);
-            console.log(`Topic: ${topic}`);
+            // check existing description from manifest
+            core.exportVariable('IS_EMPTY', `${IS_EMPTY}`);
+            
+  update-repo-description:
+    name: Update the description for this Repository
+    if: ${{ env.IS_EMPTY }} != 'T'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update repository description
+        id: update_description
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(`New description: ${ env.IS_EMPTY }`)
