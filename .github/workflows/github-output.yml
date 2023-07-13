@@ -26,5 +26,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const newVar = needs.set-job-output.outputs.foo
-            console.log(`newvar - ${newVar}`)
+            console.log(`foo - ${{needs.set-job-output.outputs.foo}}`)
