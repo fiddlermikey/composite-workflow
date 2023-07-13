@@ -27,5 +27,4 @@ jobs:
         with:
           script: |
             const newVar = needs.set-job-output.outputs.foo
-            console.log(`needs.set-job-output.outputs.foo : ${newVar}`)
-            console.log('needs.set-job-output.outputs.foo' + newVar)
+            console.log(`newvar is ${newVar}`)
