@@ -27,4 +27,4 @@ jobs:
         with:
           script: |
             console.log(`needs.set-step-output.outputs.foo : ${{needs.set-step-output.outputs.foo}}`)
-            console.log('needs.set-step-output.outputs.foo' + needs.set-step-output.outputs.foo)
+            console.log('needs.set-step-output.outputs.foo' + ${{needs.set-step-output.outputs.foo}})
