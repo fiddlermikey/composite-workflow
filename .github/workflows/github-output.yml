@@ -6,7 +6,7 @@ jobs:
     name: Set a property
     runs-on: ubuntu-latest
     outputs:
-      foo: 'bar'
+      foo: steps.update_description.outputs.foo
     steps:
       - name: Set foo
         id: update_description
