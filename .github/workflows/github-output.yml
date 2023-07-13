@@ -2,7 +2,7 @@ name: Update repository description
 on: push
 
 jobs:
-  set-step-output:
+  set-job-output:
     name: Set a property
     runs-on: ubuntu-latest
     outputs:
@@ -15,10 +15,10 @@ jobs:
           script: |
             console.log(`Setting the output step foo = bar`)
             core.exportVariable('foo','bar')
-  show-step-output:
+  show-job-output:
     name: Show property value
     runs-on: ubuntu-latest
-    needs: set-step-output
+    needs: set-job-output
     #if: needs.set-step-output.outputs.foo == 'bar'
     steps:
       - name: Update repository description
@@ -26,6 +26,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const newVar = ${{needs.set-step-output.outputs.foo}}
-            console.log(`needs.set-step-output.outputs.foo : ${newVar}`)
-            console.log('needs.set-step-output.outputs.foo' + newVar)
+            const newVar = needs.set-job-output.outputs.foo
+            console.log(`needs.set-job-output.outputs.foo : ${newVar}`)
+            console.log('needs.set-job-output.outputs.foo' + newVar)
