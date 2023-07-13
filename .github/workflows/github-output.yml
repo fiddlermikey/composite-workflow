@@ -2,24 +2,27 @@ name: Update repository description
 on: push
 
 jobs:
-  get-repo-description:
-    name: Check the description for this Repository
+  set-step-output:
+    name: Set a property
     runs-on: ubuntu-latest
+    outputs:
+      foo: 'bar'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
+      - name: Set foo
+        id: update_description
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(`Setting the output step foo = bar`)
+            core.exportVariable('foo','bar')
+  show-step-output:
+    name: Show property value
+    runs-on: ubuntu-latest
+    needs: set-step-output
+    steps:
       - name: Update repository description
         id: update_description
         uses: actions/github-script@v6
         with:
           script: |
-            // const description-text = 'My MOST Text Description'
-            // const repo = context.repo.repo
-            // const org = context.repo.owner
-            // const owner = org
-            const response = await github.rest.repos.update({
-              repo: context.repo.owner,
-              owner: context.repo.repo,
-              description: 'My MOST Text Description'
-            })
+            console.log(${{needs.set-step-output.outputs.foo}}
