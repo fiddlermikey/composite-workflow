@@ -26,5 +26,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`needs.set-step-output.outputs.foo : ${{needs.set-step-output.outputs.foo}}`)
-            console.log('needs.set-step-output.outputs.foo' + ${{needs.set-step-output.outputs.foo}})
+            const newVar = ${{needs.set-step-output.outputs.foo}}
+            console.log(`needs.set-step-output.outputs.foo : newVar`)
+            console.log('needs.set-step-output.outputs.foo' + newVar)
