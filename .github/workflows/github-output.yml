@@ -19,6 +19,7 @@ jobs:
     name: Show property value
     runs-on: ubuntu-latest
     needs: set-step-output
+    if: ${{needs.set-step-output.outputs.foo}} == 'baz'
     steps:
       - name: Update repository description
         id: update_description
