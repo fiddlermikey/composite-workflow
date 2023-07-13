@@ -2,22 +2,29 @@ name: Update repository description
 on: push
 
 jobs:
-  read-and-display-var:
+  set-job-output:
     name: Set a property
     runs-on: ubuntu-latest
+    outputs:
+      foo: ${{ steps.update_description.outputs.foo }}
     steps:
       - name: Set foo
-        id: set_foo
+        id: update_description
         uses: actions/github-script@v6
         with:
           script: |
             console.log(`Setting the output step foo = bar`)
-            core.exportVariable('foo','bar')
+            core.setOutput('foo','bar')
+  show-job-output:
+    name: Show property value
+    runs-on: ubuntu-latest
+    needs: set-job-output
+    #if: needs.set-step-output.outputs.foo == 'bar'
+    steps:
       - name: Update repository description
-        id: show_foo
-        if: process.env.foo == 'bar'
+        id: update_description
         uses: actions/github-script@v6
         with:
           script: |
-            const newVar = process.env.foo;
-            console.log('newVar is ' + newVar);
+            const newVar = needs.set-job-output.outputs.foo
+            console.log(`newvar - ${newVar}`)
