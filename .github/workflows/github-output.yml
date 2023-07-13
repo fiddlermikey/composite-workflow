@@ -15,6 +15,7 @@ jobs:
             core.exportVariable('foo','bar')
       - name: Update repository description
         id: show_foo
+        if: process.env.foo == 'bar'
         uses: actions/github-script@v6
         with:
           script: |
