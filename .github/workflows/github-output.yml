@@ -15,12 +15,6 @@ jobs:
           script: |
             console.log(`Setting the output step foo = bar`)
             core.exportVariable('foo','bar')
-      - name: Set foo
-        id: second_step
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log(`foo = ${{update_description.}}`)
   show-step-output:
     name: Show property value
     runs-on: ubuntu-latest
