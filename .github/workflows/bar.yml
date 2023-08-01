@@ -2,29 +2,4 @@ name: bar
 on: [workflow_dispatch]
 jobs:
   call-create-github-release-workflow:
-    uses: Keyfactor/actions/.github/workflows/github-release.yml@upd-deprecated
-  get-manifest-properties:
-    runs-on: windows-latest
-    outputs:
-      update_catalog: ${{ steps.read-json.outputs.update_catalog }}
-      integration_type:  ${{ steps.read-json.outputs.integration_type }}
-    steps:
-      - uses: actions/checkout@v3
-      - name: Store json
-        id: store-json
-        shell: pwsh
-        run: |
-          $json = Get-Content integration-manifest.json | ConvertFrom-Json
-          echo "update_catalog=$json.update_catalog" >> $env:GITHUB_OUTPUT
-          #echo "::set-output name=update_catalog::$(echo $json.update_catalog)"
-          echo "integration_type=$json.integration_type" >> $env:GITHUB_OUTPUT
-          #echo "::set-output name=integration_type::$(echo $json.integration_type)"
-          echo "out = $env:GITHUB_OUTPUT"
-
-      - name: Read json
-        id: read-json
-        shell: pwsh
-        run: |
-          Write-Output "update_catalog = ${{steps.store-json.outputs.update_catalog}}"
-          Write-Output "integration_type = ${{steps.store-json.outputs.integration_type}}"
-
+    uses: teamkfinteg/test-bash/.github/workflows/ci.yml@main
