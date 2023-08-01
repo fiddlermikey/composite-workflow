@@ -2,4 +2,4 @@ name: bar
 on: [workflow_dispatch]
 jobs:
   call-create-github-release-workflow:
-    uses: teamkfinteg/test-bash/.github/workflows/ci.yml@main
+    uses: teamkfinteg/test-bash/.github/workflows/caller.yml@main
