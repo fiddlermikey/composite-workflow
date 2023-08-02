@@ -2,4 +2,4 @@ name: bar
 on: [workflow_dispatch]
 jobs:
   call-create-github-release-workflow:
-    uses: fiddlermikey/release-checks/.github/workflows/caller.yml@main
+    uses: fiddlermikey/release-checks/.github/workflows/check-files.yml@main
