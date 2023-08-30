@@ -19,5 +19,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`Output:${GITHUB_REF_NAME}`);
             console.log(`Output:${env.GITHUB_REF_NAME}`);
