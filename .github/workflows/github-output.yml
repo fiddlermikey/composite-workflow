@@ -19,4 +19,5 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`Output:${env.GITHUB_REF_NAME}`);
+            const fullRef = process.env.GITHUB_REF;
+            console.log(`Output: ${fullRef}`);
