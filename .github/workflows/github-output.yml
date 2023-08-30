@@ -1,29 +1,22 @@
 name: Update repository description
-on: push
+on: [push, pull_request]
 
 jobs:
   set-job-output:
     name: Set a property
     runs-on: ubuntu-latest
-    outputs:
-      foo: ${{ steps.update_description.outputs.foo }}
     steps:
-      - name: Set foo
-        id: update_description
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log(`Setting the output step foo = bar`)
-            core.setOutput('foo','bar')
+      - name: Dump context
+        id: dump_context
+        uses: crazy-max/ghaction-dump-context@v2
   show-job-output:
     name: Show property value
     runs-on: ubuntu-latest
-    needs: set-job-output
-    #if: needs.set-step-output.outputs.foo == 'bar'
+    needs: dump_context
     steps:
       - name: Update repository description
         id: update_description
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`foo - ${{needs.set-job-output.outputs.foo}}`)
+            console.log(`Output:`);
