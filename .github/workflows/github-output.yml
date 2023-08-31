@@ -15,5 +15,5 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const patch_version = `${{ steps.read-patch_version.outputs.output-value }}`
+            const patch_version = `${{ needs.call-assign-from-json-workflow.outputs.patch_version }}`
             console.log(`Output: ${patch_version}`);
