@@ -10,10 +10,8 @@ jobs:
     name: Show property value
     runs-on: ubuntu-latest
     steps:
-      - name: Update repository description
-        id: update_description
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const patch_version = `${{ needs.call-assign-from-json-workflow.outputs.patch_version }}`
-            console.log(`Output: ${patch_version}`);
+      - name: Show Patch Version
+        run: |
+          # Get the patch_version output from the previous job
+          patch_version="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
+          echo "Output: $patch_version"
