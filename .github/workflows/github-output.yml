@@ -1,18 +1,22 @@
-name: Update repository description
-on: [push, pull_request]
+name: Starter Workflow
+on: [workflow_dispatch, push, pull_request]
 
 jobs:
-  set-job-output:
-    name: Set a property
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump context
-        id: dump_context
-        uses: crazy-max/ghaction-dump-context@v2
+  call-assign-from-json-workflow:
+    uses: Keyfactor/actions/.github/workflows/assign-env-from-json.yml@patch-version-debug
+
+
+  #dump-job-context:
+  #  name: Set a property
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Dump context
+  #      id: dump_context
+  #      uses: crazy-max/ghaction-dump-context@v2
   show-job-output:
+    needs:  call-assign-from-json-workflow
     name: Show property value
     runs-on: ubuntu-latest
-    needs: set-job-output
     steps:
       - name: Update repository description
         id: update_description
@@ -20,4 +24,6 @@ jobs:
         with:
           script: |
             const fullRef = process.env.GITHUB_REF_NAME;
+            const patch_version = needs.call-assign-from-json-workflow.outputs.update_catalog
             console.log(`Output: ${fullRef}`);
+            console.log(`Output: ${patch_version}`);

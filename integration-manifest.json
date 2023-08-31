@@ -3,6 +3,7 @@
   "name": "Remote File",
   "update_catalog": true,
   "integration_type": "orchestrator",
+  "patch_version": "1.3"
   "about": {
     "orchestrator": {
       "store_types": {
