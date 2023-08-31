@@ -1,110 +1,81 @@
 {
   "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
-  "name": "Remote File",
-  "update_catalog": true,
-  "integration_type": "orchestrator",
-  "patch_version": "1.3"
+  "name": "Fo Fu",
+  "status": "production",
+  "integration_type": "ca-gateway",
+  "description": "MOST Testing",
+  "support_level": "kf-community",
+  "link_github": false,
+  "update_catalog": false,
+  "release_dir": "SampleOrchestratorExtension/bin/Release/netcoreapp3.1/",
+  "patch_version": "1.3",
   "about": {
     "orchestrator": {
-      "store_types": {
-        "RFDER": {
-          "Name": "RFDER",
-          "ShortName": "RFDER",
-          "Capability": "RFDER",
-          "ServerRequired": true,
-          "BlueprintAllowed": false,
-          "CustomAliasAllowed": "Forbidden",
-          "PowerShell": false,
-          "PrivateKeyAllowed": "Optional",
+      "UOFramework": "10.1",
+      "pam_support": true,
+      "win": {
+        "supportsCreateStore": true,
+        "supportsDiscovery": true,
+        "supportsManagementAdd": false,
+        "supportsManagementRemove": false,
+        "supportsReenrollment": false,
+        "supportsInventory": true
+      },
+      "linux": {
+        "supportsCreateStore": false,
+        "supportsDiscovery": true,
+        "supportsManagementAdd": false,
+        "supportsManagementRemove": false,
+        "supportsReenrollment": false,
+        "supportsInventory": true
+      },
+      "store_types": [
+        {
+          "Name": "MyOrchestratorStoreType",
+          "ShortName": "MOST",
+          "Capability": "MOST",
+          "LocalStore": false,
+          "SupportedOperations": {
+            "Add": false,
+            "Create": false,
+            "Discovery": true,
+            "Enrollment": false,
+            "Remove": false
+          },
           "Properties": [
             {
-              "Name": "LinuxFilePermissionsOnStoreCreation",
-              "DisplayName": "Linux File Permissions on Store Creation",
-              "Required": false,
-              "DependsOn": "",
+              "Name": "CustomField1",
+              "DisplayName": "CustomField1",
               "Type": "String",
-              "DefaultValue": ""
+              "DependsOn": "",
+              "DefaultValue": "default",
+              "Required": true
             },
             {
-              "Name": "LinuxFileOwnerOnStoreCreation",
-              "DisplayName": "Linux File Owner on Store Creation",
-              "Required": false,
-              "DependsOn": "",
+              "Name": "CustomField2",
+              "DisplayName": "CustomField2",
               "Type": "String",
-              "DefaultValue": ""
-            },
-            {
-              "Name": "SeparatePrivateKeyFilePath",
-              "DisplayName": "Separate Private Key File Location",
-              "Required": false,
               "DependsOn": "",
-              "Type": "String",
-              "DefaultValue": ""
+              "DefaultValue": null,
+              "Required": true
             }
-          ]
-
-        },
-        "RFPEM": {
-          "Name": "RFPEM",
-          "ShortName": "RFPEM",
-          "Capability": "RFPEM",
+          ],
+          "EntryParameters": [],
+          "PasswordOptions": {
+            "EntrySupported": false,
+            "StoreRequired": false,
+            "Style": "Default"
+          },
+          "StorePathType": "",
+          "StorePathValue": "",
+          "PrivateKeyAllowed": "Forbidden",
+          "JobProperties": [],
           "ServerRequired": true,
-          "BlueprintAllowed": false,
-          "CustomAliasAllowed": "Forbidden",
           "PowerShell": false,
-          "PrivateKeyAllowed": "Optional",
-          "Properties": [
-            {
-              "Name": "LinuxFilePermissionsOnStoreCreation",
-              "DisplayName": "Linux File Permissions on Store Creation",
-              "Required": false,
-              "DependsOn": "",
-              "Type": "String",
-              "DefaultValue": ""
-            },
-            {
-              "Name": "LinuxFileOwnerOnStoreCreation",
-              "DisplayName": "Linux File Owner on Store Creation",
-              "Required": false,
-              "DependsOn": "",
-              "Type": "String",
-              "DefaultValue": ""
-            },
-            {
-              "Name": "IsTrustStore",
-              "DisplayName": "Trust Store",
-              "Required": false,
-              "DependsOn": "",
-              "Type": "Bool",
-              "DefaultValue": false
-            },
-            {
-              "Name": "IncludesChain",
-              "DisplayName": "Store Includes Chain",
-              "Required": false,
-              "DependsOn": "",
-              "Type": "Bool",
-              "DefaultValue": false
-            },
-            {
-              "Name": "SeparatePrivateKeyFilePath",
-              "DisplayName": "Separate Private Key File Location",
-              "Required": false,
-              "DependsOn": "",
-              "Type": "String",
-              "DefaultValue": ""
-            },
-            {
-              "Name": "IsRSAPrivateKey",
-              "DisplayName": "Is RSA Private Key",
-              "Required": false,
-              "DependsOn": "",
-              "Type": "Bool",
-              "DefaultValue": false
-            }
-          ]
+          "BlueprintAllowed": false,
+          "CustomAliasAllowed": "Forbidden"
         }
-      }
+      ]
     }
   }
 }
