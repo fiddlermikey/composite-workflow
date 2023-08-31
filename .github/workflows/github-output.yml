@@ -1,15 +1,11 @@
 name: Starter Workflow
 on: [workflow_dispatch, push, pull_request]
 
-#@patch-version-debug
-#          patch_version="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
-
 jobs:
   get-manifest-properties:
     runs-on: windows-latest
     outputs:
-      update_catalog: ${{ steps.read-json.outputs.update_catalog }}
-      integration_type:  ${{ steps.read-json.outputs.integration_type }}
+      patch_version: ${{ steps.read-json.outputs.patch_version }}
     steps:
       - uses: actions/checkout@v3
       - name: Store json
@@ -25,4 +21,5 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(env.patch_version);
+            const patchVersion = process.env.patch_version
+            console.log(patchVersion);
