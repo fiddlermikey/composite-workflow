@@ -25,4 +25,4 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(`${{ env.patch_version }}`);
+            console.log(env.patch_version);
