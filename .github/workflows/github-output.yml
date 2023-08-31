@@ -5,14 +5,6 @@ jobs:
   call-assign-from-json-workflow:
     uses: Keyfactor/actions/.github/workflows/assign-env-from-json.yml@patch-version-debug
 
-
-  #dump-job-context:
-  #  name: Set a property
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: Dump context
-  #      id: dump_context
-  #      uses: crazy-max/ghaction-dump-context@v2
   show-job-output:
     needs:  call-assign-from-json-workflow
     name: Show property value
@@ -23,7 +15,5 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const fullRef = process.env.GITHUB_REF_NAME;
-            const patch_version = needs.call-assign-from-json-workflow.outputs.update_catalog
-            console.log(`Output: ${fullRef}`);
+            const patch_version = `${{ steps.read-patch_version.outputs.output-value }}`
             console.log(`Output: ${patch_version}`);
