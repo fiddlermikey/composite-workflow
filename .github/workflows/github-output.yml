@@ -20,7 +20,10 @@ jobs:
         uses: actions/github-script@v6
         with: 
           script: |
-            console.log("Hello")
+            console.log("========")
+            const patchVersion = ${{ needs.call-assign-from-json-workflow.outputs.patch_version}}
+            console.log(`patchVersion = ${patchVersion}`)
+            console.log("========")
 
       #- name: Dump context
       #  id: dump_context
