@@ -12,17 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: call-assign-from-json-workflow
     steps:
-      #- name: Dump context
-      #  id: dump-context
-      #  uses: crazy-max/ghaction-dump-context@v2
-
       - name: Read manifest value
         id: read-manifest-value
         # if: needs.call-assign-from-json-workflow.outputs.patch_version == '1.3'
         run: |
           patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
           echo "Default Value: $patchVersion"
-      #- name: Dump context
-      #  id: dump_context
-      #  uses: crazy-max/ghaction-dump-context@v2
  
