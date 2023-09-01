@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Read manifest value
         id: read-manifest-value
-        uses: action/github-script@v6
+        uses: actions/github-script@v6
         with: 
           script: |
             console.log("Hello")
