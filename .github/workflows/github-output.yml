@@ -27,6 +27,4 @@ jobs:
           script: |
             const patchVersion = process.env.patch_version;
             console.log(`patchVersion Value: ${patchVersion}`);
-            epatchVersion = env.patch_version;
-            console.log(`another env.PATCH_VERSION Value:${epatchVersion}`)
  
