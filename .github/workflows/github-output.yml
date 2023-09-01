@@ -14,8 +14,15 @@ jobs:
     steps:
       - name: Read manifest value
         id: read-manifest-value
-        # if: needs.call-assign-from-json-workflow.outputs.patch_version == '1.3'
         run: |
           patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
           echo "Default Value: $patchVersion"
+
+      - name: Read it again
+        id: read-it-again
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const defaultValue = process.env.default;
+            console.log(`Default Value: ${defaultValue}`);
  
