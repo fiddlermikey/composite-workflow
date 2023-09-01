@@ -17,12 +17,12 @@ jobs:
     steps:
       - name: Read manifest value
         id: read-manifest-value
-        if: ${{ needs.call-assign-from-json-workflow.outputs.patch_version}} != ''
+        if: needs.call-assign-from-json-workflow.outputs.patch_version != ''
         uses: actions/github-script@v6
         with: 
           script: |
             console.log("========")
-            const patchVersion = ${{ needs.call-assign-from-json-workflow.outputs.patch_version}}
+            const patchVersion = needs.call-assign-from-json-workflow.outputs.patch_version
             console.log(`patchVersion = ${patchVersion}`)
             console.log("========")
 
