@@ -1,8 +1,6 @@
 name: Starter Workflow
 on: [workflow_dispatch, push, pull_request]
 
-#@patch-version-debug
-#          patch_version="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
 
 jobs:
   call-assign-from-json-workflow:
@@ -15,8 +13,8 @@ jobs:
       - name: Read manifest value
         id: read-manifest-value
         run: |
-          patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
-          # echo "patchVersion Value: $patchVersion"
+          $patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
+          echo "patchVersion Value: $patchVersion"
           echo "patch_version=$patchVersion" >> $GITHUB_ENV
 
       - name: Read it again
