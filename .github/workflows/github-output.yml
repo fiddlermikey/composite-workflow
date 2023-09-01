@@ -16,13 +16,13 @@ jobs:
         id: read-manifest-value
         run: |
           patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
-          echo "Default Value: $patchVersion"
+          echo "patchVersion Value: $patchVersion"
 
       - name: Read it again
         id: read-it-again
         uses: actions/github-script@v6
         with:
           script: |
-            const defaultValue = process.env.default;
-            console.log(`Default Value: ${defaultValue}`);
+            const patchVersion = process.env.patchVersion;
+            console.log(`patchVersion Value: ${patchVersion}`);
  
