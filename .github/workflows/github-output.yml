@@ -23,7 +23,7 @@ jobs:
         with: 
           script: |
             console.log("========")
-            const patchVersion = ${needs.call-assign-from-json-workflow.outputs.patch_version}
+            const patchVersion = `${needs.call-assign-from-json-workflow.outputs.patch_version}`
             console.log(`needs.call-assign-from-json-workflow.outputs.name = ${needs.call-assign-from-json-workflow.outputs.name}`)
             console.log(`needs.call-assign-from-json-workflow.outputs.description = ${needs.call-assign-from-json-workflow.outputs.description}`)
             console.log("========")
