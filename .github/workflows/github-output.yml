@@ -1,11 +1,15 @@
 name: Starter Workflow
 on: [workflow_dispatch, push, pull_request]
 
+#@patch-version-debug
+#          patch_version="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
+
 jobs:
   get-manifest-properties:
     runs-on: windows-latest
     outputs:
-      patch_version: ${{ steps.read-json.outputs.patch_version }}
+      update_catalog: ${{ steps.read-json.outputs.update_catalog }}
+      integration_type:  ${{ steps.read-json.outputs.integration_type }}
     steps:
       - uses: actions/checkout@v3
       - name: Store json
@@ -15,11 +19,3 @@ jobs:
           $json = Get-Content integration-manifest.json | ConvertFrom-Json
           $myvar = $json.patch_version
           echo "patch_version=$myvar" | Out-File -FilePath $Env:GITHUB_OUTPUT -Encoding utf8 -Append
-
-      - name: Check for var
-        id: read-patch_version
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const patchVersion = env.patch_version
-            console.log(patchVersion);
