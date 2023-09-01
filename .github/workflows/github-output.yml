@@ -24,8 +24,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            if ($patch_version != '')
+            if (process.env.patch_version != '')
             {
-              console.log(`patchVersion Value: ${ patchVersion}`)
+              console.log(`patchVersion Value: ${patchVersion}`)
             }            
  
