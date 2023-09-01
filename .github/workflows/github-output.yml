@@ -21,7 +21,7 @@ jobs:
         # if: needs.call-assign-from-json-workflow.outputs.patch_version == '1.3'
         run: |
           patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
-          echo "Default Value: $defaultValue"
+          echo "Default Value: $patchVersion"
       #- name: Dump context
       #  id: dump_context
       #  uses: crazy-max/ghaction-dump-context@v2
