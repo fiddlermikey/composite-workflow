@@ -17,8 +17,7 @@ jobs:
         run: |
           patchVersion="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
           echo "patchVersion Value: $patchVersion"
-          echo "patch_version=$patchVersion" >> $GITHUB_ENV
-
+          // echo "patch_version=$patchVersion" >> $GITHUB_ENV
 
       - name: Read it again
         id: read-it-again
