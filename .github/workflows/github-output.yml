@@ -5,7 +5,7 @@ on: [workflow_dispatch, push, pull_request]
 #          patch_version="${{ needs.call-assign-from-json-workflow.outputs.patch_version }}"
 
 jobs:
-  call-assign-from-json-workflow:
+  call-create-github-release-workflow:
     uses: Keyfactor/actions/.github/workflows/assign-env-from-json.yml@patch-version-debug
 
   read-manifest-property:
