@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: call-assign-from-json-workflow
     steps:
+      - name: Dump context
+        id: dump-context
+        uses: crazy-max/ghaction-dump-context@v2
+
       - name: Read manifest value
         id: read-manifest-value
         # if: needs.call-assign-from-json-workflow.outputs.patch_version == '1.3'
@@ -19,7 +23,7 @@ jobs:
         with: 
           script: |
             console.log("========")
-            const patchVersion = needs.call-assign-from-json-workflow.outputs.patch_version
+            const patchVersion = ${needs.call-assign-from-json-workflow.outputs.patch_version}
             console.log(`needs.call-assign-from-json-workflow.outputs.name = ${needs.call-assign-from-json-workflow.outputs.name}`)
             console.log(`needs.call-assign-from-json-workflow.outputs.description = ${needs.call-assign-from-json-workflow.outputs.description}`)
             console.log("========")
