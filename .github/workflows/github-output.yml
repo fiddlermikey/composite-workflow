@@ -17,6 +17,7 @@ jobs:
     steps:
       - name: Read manifest value
         id: read-manifest-value
+        if: ${{ needs.call-assign-from-json-workflow.outputs.patch_version}} != ''
         uses: actions/github-script@v6
         with: 
           script: |
