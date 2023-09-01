@@ -26,6 +26,6 @@ jobs:
           script: |
             const patchVersion = process.env.patch_version;
             console.log(`patchVersion Value: ${patchVersion}`);
-            if ($patchVersion != '') { 
+            if (patchVersion !== '') { 
               console.log(`patchVersion Value is still: ${patchVersion}`);
             }
