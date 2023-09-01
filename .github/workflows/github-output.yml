@@ -23,8 +23,6 @@ jobs:
       - name: Read it again
         id: read-it-again
         uses: actions/github-script@v6
-        env: 
-          PATCH_VERSION: needs.call-assign-from-json-workflow.outputs.patch_version
         with:
           script: |
             const patchVersion = process.env.patch_version;
