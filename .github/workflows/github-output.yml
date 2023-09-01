@@ -9,7 +9,7 @@ jobs:
     uses: Keyfactor/actions/.github/workflows/assign-env-from-json.yml@patch-version-debug
 
   read-manifest-property:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: call-assign-from-json-workflow
     steps:
       - name: Read manifest value
