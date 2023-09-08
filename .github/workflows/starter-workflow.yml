@@ -1,6 +1,7 @@
 name: Starter Workflow Ubuntu Mixed
 on: [workflow_dispatch, push, pull_request]
-
+env:
+	NAME=foo-fu
 
 jobs:
   call-assign-from-json-workflow:
