@@ -1,8 +1,9 @@
 name: Starter Workflow Ubuntu Mixed
-on: [workflow_dispatch, push, pull_request]
+on: [workflow_dispatch, push]
 
 env:
   NAME: "name-value"
+
 jobs:
   call-assign-from-json-workflow:
     uses: Keyfactor/actions/.github/workflows/assign-env-from-json.yml@patch-version-debug
