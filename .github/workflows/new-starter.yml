@@ -1,4 +1,4 @@
-name: Starter Workflow Ubuntu Mixed
+name: New Starter Workflow Ubuntu Mixed
 on: [workflow_dispatch, push]
 
 env:
