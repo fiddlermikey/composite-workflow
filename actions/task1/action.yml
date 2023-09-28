@@ -6,9 +6,9 @@ inputs:
     required: true
     default: ‘Folks’
 outputs:
-  greeting:
+  value:
     description: "Greeting"
-    value: ${{ inputs.who-to-say-Hi }}
+    value: "Some value"
 runs:
   using: "composite"
   steps:
