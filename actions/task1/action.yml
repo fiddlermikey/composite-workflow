@@ -22,5 +22,6 @@ runs:
     - run: |
         ls
         pwd
+        chmod +x ./goodbye.sh
         ./goodbye.sh
       shell: bash
