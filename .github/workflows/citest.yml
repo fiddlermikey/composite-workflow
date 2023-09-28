@@ -12,5 +12,5 @@ jobs:
       with:
         who-to-say-Hi: ‘Akash’
     - name: echo output from hello-folks
-      run: /
+      run: |
         echo ${{ steps.hello-folks.outputs.greeting }}
