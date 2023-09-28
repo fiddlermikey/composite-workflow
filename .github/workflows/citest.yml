@@ -1,0 +1,16 @@
+name: Hello Folks
+on: [push]
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v2
+    - name: Call Composite Action Hello Folks
+      uses: ./actions/task1
+      id: hello-folks
+      with:
+        name: ‘Akash’
+    - name: echo output from hello-folks
+      run: /
+        echo ${{ steps.hello-folks.outputs.greeting }}

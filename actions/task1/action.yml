@@ -1,0 +1,15 @@
+name: 'Hello Folks'
+description: 'Say HI!'
+inputs:
+  who-to-say-Hi:  # id of the input
+    description: 'Who to say Hi'
+    required: true
+    default: ‘Folks’
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Hello ${{ inputs.who-to-say-Hi }}."
