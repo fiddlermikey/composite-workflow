@@ -10,7 +10,7 @@ jobs:
       uses: ./actions/task1
       id: hello-folks
       with:
-        name: ‘Akash’
+        who-to-say-Hi: ‘Akash’
     - name: echo output from hello-folks
       run: /
         echo ${{ steps.hello-folks.outputs.greeting }}
