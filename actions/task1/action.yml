@@ -6,9 +6,9 @@ inputs:
     required: true
     default: ‘Folks’
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  greeting:
+    description: "Greeting"
+    value: ${{ inputs.who-to-say-Hi }}
 runs:
   using: "composite"
   steps:
